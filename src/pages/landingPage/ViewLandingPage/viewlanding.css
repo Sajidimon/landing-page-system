@@ -1,0 +1,11 @@
+.label-text {
+    font-size: 1.075rem !important;
+    color: #333 !important;
+}
+
+.tooltip:before {
+    padding-top: .7rem;
+    padding-bottom: 0.7rem;
+    background-color: #C1C1C1;
+    color: #333;
+}
