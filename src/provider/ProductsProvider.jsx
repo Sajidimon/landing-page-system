@@ -28,7 +28,12 @@ const ProductsProvider = ({ children }) => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/products?email=${user?.email}`)
+            fetch(`http://localhost:5000/products?email=${user?.email}`, {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('access-token')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data)
