@@ -16,7 +16,7 @@ const AllOrders = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/orders?email=${user?.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/orders?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setAllorders(data)
@@ -31,7 +31,7 @@ const AllOrders = () => {
     // delete order from db;
 
     const handleorderDelete = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

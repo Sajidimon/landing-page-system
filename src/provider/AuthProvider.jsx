@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.init";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getRole } from "../api/auth";
 import axios from 'axios';
 
 
@@ -11,22 +10,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState([])
-    const [userrole, setUserrole] = useState(null)
     const [loading, setLoading] = useState(true)
-
-
-    //get role;
-
-    useEffect(() => {
-        if (user?.email) {
-            getRole(user.email)
-                .then(data => {
-                    setUserrole(data.role)
-                    console.log(data);
-                })
-        }
-    }, [user?.email])
-
 
     //signup control;
     const [disableSignup, setDisableSignup] = useState(() => {
@@ -63,16 +47,17 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             console.log('current user', currentUser)
             if (currentUser?.email) {
-                axios.post('http://localhost:5000/jwt', {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
                     email: currentUser.email
                 })
                     .then(data => {
                         localStorage.setItem('access-token', data.data.token)
-                })
-                setLoading(false)
+                        setLoading(false)
+                    })
 
             } else {
                 localStorage.removeItem('access-token')
+                setLoading(false)
             }
 
 
@@ -107,8 +92,6 @@ const AuthProvider = ({ children }) => {
         logout,
         disableSignup,
         setDisableSignup,
-        userrole,
-        setUserrole
 
     }
 

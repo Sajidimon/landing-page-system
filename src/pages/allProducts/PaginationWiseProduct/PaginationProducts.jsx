@@ -9,7 +9,7 @@ const PaginationProducts = () => {
     return (
         <div className="grid md:grid-cols-4 md:gap-4">
             {
-                products.map(product => <ProductCard key={product._id} product={ product} />)
+                products?.map(product => <ProductCard key={product._id} product={ product} />)
             }
            
         </div>

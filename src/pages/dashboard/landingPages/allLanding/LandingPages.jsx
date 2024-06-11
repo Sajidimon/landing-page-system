@@ -14,7 +14,7 @@ const LandingPages = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/landing?email=${user?.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/landing?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setPages(data)
@@ -76,7 +76,7 @@ const LandingPages = () => {
                                 <td>{page.productDiscountPrice}</td>
                                 <td className="flex gap-2">
                                     <Link to={`/landing/product/${page._id}`}> <button className="p-2 rounded bg-blue-500 text-white border-none"> <IoIosEye /> </button></Link>
-                                    <button onClick={()=>hanldeLandingDelete(page._id)} className="p-2 rounded bg-red-500 text-white border-none"><FaTrash /></button>
+                                    <button onClick={() => hanldeLandingDelete(page._id)} className="p-2 rounded bg-red-500 text-white border-none"><FaTrash /></button>
                                 </td>
                             </tr>)
                         }

@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "landing-page-1c339",
+    "production": "landing-page-1c339"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

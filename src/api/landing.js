@@ -15,12 +15,9 @@ export const saveLandingData = async (landingData) => {
         productImage: landingData.productImage,
         productGallaries: landingData.productGallaries
     }
-
-    console.log(landingInfo);
-
-
+    
     try {
-        const response = await fetch('http://localhost:5000/landing', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/landing`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -61,7 +58,7 @@ export const deleteLanding = async (id) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/landing/${id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/landing/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

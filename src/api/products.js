@@ -15,9 +15,7 @@ export const saveProducts = products => {
         productImg: products.productImg
     }
 
-    console.log(productData);
-
-    fetch('http://localhost:5000/products', {
+    fetch(`${import.meta.env.VITE_API_URL}/products`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -28,7 +26,6 @@ export const saveProducts = products => {
             if (data.insertedId) {
                 alert('Product has been saved')
             }
-            console.log(data);
         })
 }
 
@@ -47,7 +44,7 @@ export const deleteProduct = id => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/products/${id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/products/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -86,7 +83,7 @@ export const updateProduct = updateItem => {
         productDescription: updateItem.productDescription
     }
 
-    fetch(`http://localhost:5000/products/${updateItem.productId}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/products/${updateItem.productId}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'
@@ -103,7 +100,6 @@ export const updateProduct = updateItem => {
                     timer: 1500
                 });
             }
-            console.log(data);
         })
 }
 

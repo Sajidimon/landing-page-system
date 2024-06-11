@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   {
     path: '/landing/product/:title',
     element: <ViewLandingPage />,
-    loader: ({params}) => fetch(`http://localhost:5000/landing/product/${params.title}`)
+    loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/landing/product/${params.title}`)
   },
   {
     path: '/admin-dashboard',
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: 'update-orders/:id',
         element: <UpdateOrder />,
-        loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/orders/${params.id}`)
       },
       {
         path: 'products',
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: 'update-product/:id',
         element: <UpdateProduct />,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`)
       },
       {
         path: 'all-landing',
@@ -71,16 +71,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'add-landing',
-        element: <AddLanding/>
+        element: <AddLanding />
       },
       {
         path: 'addUser',
-        element: <MakeAdmin/>
+        element: <MakeAdmin />
       },
       {
         path: 'users',
         element: <Users />,
-        loader: () => fetch('http://localhost:5000/users')
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/users`)
       }
     ]
   },
@@ -95,12 +95,12 @@ const router = createBrowserRouter([
   {
     path: '/products/item/:title',
     element: <ProductItem />,
-    loader: ({ params }) => fetch(`http://localhost:5000/products/item/${params.title}`)
+    loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/item/${params.title}`)
   },
   {
     path: '/checkout/:id',
     element: <Checkout />,
-    loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+    loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`)
   }
 ])
 

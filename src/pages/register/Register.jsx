@@ -16,12 +16,6 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        const Signupinfo = {
-            email, password
-        }
-
-        console.log(Signupinfo);
-
 
         //reset password error;
         setPassworderr(' ');
@@ -46,7 +40,6 @@ const Register = () => {
                 saveUser(user)
                 navigate('/admin-dashboard/home')
             }).catch(error => {
-                console.log(error)
                 if (error?.code === 'auth/email-already-in-use')
                     setEmailerr('Email is already exist')
             })

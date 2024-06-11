@@ -58,7 +58,7 @@ const ViewLandingPage = () => {
         console.log(CustomerInfo);
 
 
-        fetch('http://localhost:5000/orders', {
+        fetch(`${import.meta.env.VITE_API_URL}/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ const ViewLandingPage = () => {
         <div>
             <div>
                 <>
-                    <h2 className="text-3xl text-center bg-green-500 py-5 px-20 text-white md:w-3/5 mx-auto mt-10 leading-normal">{ productTitle}</h2>
+                    <h2 className="text-3xl text-center bg-green-500 py-5 px-20 text-white md:w-3/5 mx-auto mt-10 leading-normal">{productTitle}</h2>
                     <div className="flex items-center justify-evenly text-2xl text-black mt-5 mb-10">
                         <div>
                             <h2 className="my-5">বর্তমান মুল্য</h2>
@@ -95,7 +95,7 @@ const ViewLandingPage = () => {
                         </div>
                         <div>
                             <h2 className="my-5">{productDiscountPrice} টাকা</h2>
-                            <h2 className='text-red-500 line-through'>{ productRegularPrice} টাকা</h2>
+                            <h2 className='text-red-500 line-through'>{productRegularPrice} টাকা</h2>
                         </div>
                     </div>
                     <div className="min-h-screen bg-[#C8F3E3] rounded-md md:w-3/5 mx-auto mt-10 pb-10">
@@ -158,14 +158,14 @@ const ViewLandingPage = () => {
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <div id='ptitle' className="font-bold">{ productTitle}</div>
+                                                                    <div id='ptitle' className="font-bold">{productTitle}</div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <input type="number" min='1' defaultValue='1' className='input-sm bg-white border-2 rounded' />
                                                         </td>
-                                                        <td id='total' value={productPrice} onChange={handleProductPriceChange}> { totalCost}৳ </td>
+                                                        <td id='total' value={productPrice} onChange={handleProductPriceChange}> {totalCost}৳ </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -194,25 +194,25 @@ const ViewLandingPage = () => {
                             <button className='bg-green-500 text-white py-4 text-xl uppercase font-bold rounded w-full'>Product Featured</button>
                             <div className='border-2 bg-[#C8F3E3] text-black font-serif text-xl py-3 px-5 mb-3 leading-normal'>
                                 {
-                                    features1 && <p className=''><FaHandPointRight className='inline'/> {features1}</p>
+                                    features1 && <p className=''><FaHandPointRight className='inline' /> {features1}</p>
                                 }
-                                
+
                                 {
-                                    features2 && <p className=''><FaHandPointRight className='inline'/> {features2}</p>
+                                    features2 && <p className=''><FaHandPointRight className='inline' /> {features2}</p>
                                 }
-                                
+
                                 {
-                                    features3 && <p className=''><FaHandPointRight className='inline'/> {features3}</p>
+                                    features3 && <p className=''><FaHandPointRight className='inline' /> {features3}</p>
                                 }
-                                
+
                                 {
-                                    features4 && <p className=''><FaHandPointRight className='inline'/> {features4}</p>
+                                    features4 && <p className=''><FaHandPointRight className='inline' /> {features4}</p>
                                 }
-                                
+
                                 {
-                                    features5 && <p className=''><FaHandPointRight className='inline'/> {features5}</p>
+                                    features5 && <p className=''><FaHandPointRight className='inline' /> {features5}</p>
                                 }
-                                
+
                             </div>
                         </div>
                     </div>

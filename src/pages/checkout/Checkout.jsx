@@ -11,10 +11,10 @@ const Checkout = () => {
     const checkoutItem = useLoaderData();
 
     const { productTitle, productImg, productDiscountPrice, productRegularPrice, totalCost } = checkoutItem;
-    
+
     const handleCheckoutForm = event => {
         event.preventDefault();
-        
+
 
         const orderDate = new Date().toLocaleDateString('en-US', {
             month: 'long',
@@ -33,7 +33,7 @@ const Checkout = () => {
 
         console.log(orderInfo);
 
-        fetch('http://localhost:5000/orders', {
+        fetch(`${import.meta.env.VITE_API_URL}/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -107,14 +107,14 @@ const Checkout = () => {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div id='ptitle' className="font-bold">{ productTitle}</div>
+                                                    <div id='ptitle' className="font-bold">{productTitle}</div>
                                                 </div>
                                             </div>
                                         </td>
                                             <td>
                                                 <input type="number" min='1' defaultValue='1' className='input-sm bg-white border-2 rounded' />
                                             </td>
-                                            <td id='total'>{productDiscountPrice? productDiscountPrice: productRegularPrice } ৳ </td>
+                                            <td id='total'>{productDiscountPrice ? productDiscountPrice : productRegularPrice} ৳ </td>
                                         </tr>
                                         </tbody>
                                     </table>

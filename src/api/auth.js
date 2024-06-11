@@ -8,7 +8,7 @@ export const saveUser = user => {
         role: 'admin'
     }
 
-    fetch('http://localhost:5000/users', {
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -17,16 +17,7 @@ export const saveUser = user => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            if (data.insertedId) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Signup is Successfull",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
+            console.log('signup is successfull', data);
         })
 }
 
@@ -39,7 +30,7 @@ export const saveRole = user => {
         role: user.role
     }
 
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/users/${user?.email}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -48,7 +39,6 @@ export const saveRole = user => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if (data.upsertedCount > 0) {
                 Swal.fire({
                     position: "center",
@@ -67,14 +57,4 @@ export const saveRole = user => {
                 });
             }
         })
-}
-
-
-
-//get role;
-
-export const getRole = email => {
-   return fetch(`http://localhost:5000/users/${email}`)
-    .then(res=>res.json())
-        
 }

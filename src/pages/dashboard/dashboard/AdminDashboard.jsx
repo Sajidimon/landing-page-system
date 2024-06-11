@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
-import { FaHome, FaProductHunt, FaShoppingCart, FaExternalLinkAlt, FaShopify } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { IoMenu } from "react-icons/io5";
 import Navlink from "../../../layouts/Navlink/Navlink";
 
 
@@ -21,7 +19,7 @@ const AdminDashboard = () => {
         logout()
             .then(() => { 
             })
-        .then(error=>console.log(error))
+        .catch(error=>console.log(error))
     }
 
     return (

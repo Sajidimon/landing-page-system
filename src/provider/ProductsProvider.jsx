@@ -9,16 +9,15 @@ const ProductsProvider = ({ children }) => {
     const { user } = useAuth();
     const [users, setUsers] = useState([])
     const [products, setProducts] = useState([])
-    
+
     //user management;
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/users?email=${user.email}`)
+            fetch(`${import.meta.env.VITE_API_URL}/users?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setUsers(data)
-                    console.log(data);
                 })
         }
     }, [user?.email])
@@ -28,7 +27,7 @@ const ProductsProvider = ({ children }) => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/products?email=${user?.email}`, {
+            fetch(`${import.meta.env.VITE_API_URL}/products?email=${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('access-token')}`
@@ -42,12 +41,12 @@ const ProductsProvider = ({ children }) => {
     }, [user?.email])
 
 
-    
+
 
     const productInfo = {
         products,
         users
-}
+    }
 
     return (
         <ProductsContext.Provider value={productInfo}>

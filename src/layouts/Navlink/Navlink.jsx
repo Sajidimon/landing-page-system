@@ -1,12 +1,9 @@
 import { FaExternalLinkAlt, FaHome, FaProductHunt, FaShopify, FaShoppingCart } from "react-icons/fa";
 import { ImUsers } from "react-icons/im";
 import { Link } from "react-router-dom";
-import useAuth from "../../hook/useAuth/useAuth";
 
 
 const Navlink = () => {
-
-    const { userrole } = useAuth();
 
 
     return (
